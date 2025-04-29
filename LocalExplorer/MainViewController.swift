@@ -10,6 +10,7 @@ import CoreData
 
 class MainViewController: UIViewController, UITextFieldDelegate {
     var currentLocation: Location?
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     @IBOutlet weak var takePicButton: UIButton!
@@ -23,16 +24,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         self.changeEditMode(self)
-        
+
         let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip]
         for textfield in textFields {
-            textfield.addTarget(self, action: #selector(UITextFieldDelegate.textFieldShouldEndEditing(_:)), for: UIControl.Event.editingDidEnd)
+            textfield.addTarget(self, action: #selector(textFieldDidEndEditing(_:)), for: .editingDidEnd)
         }
     }
     
-    func textFieldShouldEditing(_textFIeld: UITextField) -> Bool {
+    @objc func textFieldDidEndEditing(_ textField: UITextField) {
         if currentLocation == nil {
             let context = appDelegate.persistentContainer.viewContext
             currentLocation = Location(context: context)
@@ -42,7 +42,6 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         currentLocation?.city = txtCity.text
         currentLocation?.state = txtState.text
         currentLocation?.zipCode = txtZip.text
-        return true
     }
     
     @objc func saveLocation() {
@@ -60,7 +59,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         if sgmtEditMode.selectedSegmentIndex == 0 {
             for textField in textFields {
                 textField.isEnabled = false
-                textField.borderStyle = UITextField.BorderStyle.none
+                textField.borderStyle = .none
             }
             takePicButton.isHidden = true
             navigationItem.rightBarButtonItem = nil
@@ -68,21 +67,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         else if sgmtEditMode.selectedSegmentIndex == 1 {
             for textField in textFields {
                 textField.isEnabled = true
-                textField.borderStyle = UITextField.BorderStyle.roundedRect
+                textField.borderStyle = .roundedRect
             }
             takePicButton.isHidden = false
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem:.save, target: self, action: #selector(self.saveLocation))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveLocation))
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -6,12 +6,7 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		BF1925CE2DC032F20017A97D /* LocalExplorerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BF1925CC2DC032F20017A97D /* LocalExplorerModel.xcdatamodeld */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
-		BF1925CD2DC032F20017A97D /* LocalExplorerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LocalExplorerModel.xcdatamodel; sourceTree = "<group>"; };
 		BF3CC44C2DBFED97004C0AAC /* LocalExplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocalExplorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -50,7 +45,6 @@
 		BF3CC4432DBFED97004C0AAC = {
 			isa = PBXGroup;
 			children = (
-				BF1925CC2DC032F20017A97D /* LocalExplorerModel.xcdatamodeld */,
 				BF3CC44E2DBFED97004C0AAC /* LocalExplorer */,
 				BF3CC44D2DBFED97004C0AAC /* Products */,
 			);
@@ -138,7 +132,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF1925CE2DC032F20017A97D /* LocalExplorerModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +145,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AHLPDJXG24;
+				DEVELOPMENT_TEAM = 4NSQ77297M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocalExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -165,7 +158,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Learning-Mobile-Apps.LocalExplorer";
+				PRODUCT_BUNDLE_IDENTIFIER = LocalExplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -180,7 +173,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AHLPDJXG24;
+				DEVELOPMENT_TEAM = 4NSQ77297M;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = LocalExplorer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -193,7 +186,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Learning-Mobile-Apps.LocalExplorer";
+				PRODUCT_BUNDLE_IDENTIFIER = LocalExplorer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -342,19 +335,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		BF1925CC2DC032F20017A97D /* LocalExplorerModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BF1925CD2DC032F20017A97D /* LocalExplorerModel.xcdatamodel */,
-			);
-			currentVersion = BF1925CD2DC032F20017A97D /* LocalExplorerModel.xcdatamodel */;
-			path = LocalExplorerModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BF3CC4442DBFED97004C0AAC /* Project object */;
 }
