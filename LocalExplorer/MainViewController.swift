@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 
 class MainViewController: UIViewController, UITextFieldDelegate {
+
     var currentLocation: Location?
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -23,12 +24,23 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load saved Location data if available
+        if let location = currentLocation {
+            txtName.text = location.locationName
+            txtAddress.text = location.streetAddress
+            txtCity.text = location.city
+            txtState.text = location.state
+            txtZip.text = location.zipCode
+        }
 
-        self.changeEditMode(self)
+        // Set initial view/edit mode
+        updateEditMode()
 
+        // Set up text field event listeners for saving
         let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip]
-        for textfield in textFields {
-            textfield.addTarget(self, action: #selector(textFieldDidEndEditing(_:)), for: .editingDidEnd)
+        for textField in textFields {
+            textField.addTarget(self, action: #selector(textFieldDidEndEditing(_:)), for: .editingDidEnd)
         }
     }
     
@@ -47,7 +59,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @objc func saveLocation() {
         appDelegate.saveContext()
         sgmtEditMode.selectedSegmentIndex = 0
-        changeEditMode(self)
+        updateEditMode()
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,6 +67,10 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func changeEditMode(_ sender: Any) {
+        updateEditMode()
+    }
+    
+    private func updateEditMode() {
         let textFields: [UITextField] = [txtName, txtAddress, txtCity, txtState, txtZip]
         if sgmtEditMode.selectedSegmentIndex == 0 {
             for textField in textFields {
@@ -63,8 +79,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
             }
             takePicButton.isHidden = true
             navigationItem.rightBarButtonItem = nil
-        }
-        else if sgmtEditMode.selectedSegmentIndex == 1 {
+        } else if sgmtEditMode.selectedSegmentIndex == 1 {
             for textField in textFields {
                 textField.isEnabled = true
                 textField.borderStyle = .roundedRect

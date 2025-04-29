@@ -14,9 +14,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let settings = UserDefaults.standard
+
+        if settings.string(forKey: Constants.kSortField) == nil {
+            settings.set("locationName", forKey: Constants.kSortField)
+        }
+
+        if settings.object(forKey: Constants.kSortDirectionAscending) == nil {
+            settings.set(true, forKey: Constants.kSortDirectionAscending)
+        }
+
+        settings.synchronize()
+
         return true
     }
+
+
+
+
+
 
     // MARK: UISceneSession Lifecycle
 
