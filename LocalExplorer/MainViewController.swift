@@ -14,6 +14,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+    @IBOutlet weak var takePicButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var takePicButton: UIButton!
     @IBOutlet weak var txtZip: UITextField!
     @IBOutlet weak var txtState: UITextField!

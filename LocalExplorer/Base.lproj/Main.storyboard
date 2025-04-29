@@ -35,8 +35,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="97V-UB-F03">
+                                <rect key="frame" x="131" y="145" width="131" height="32"/>
+                                <segments>
+                                    <segment title="View"/>
+                                    <segment title="Edit"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeEditMode:" destination="xV5-t9-jpx" eventType="valueChanged" id="ugS-Mm-z9O"/>
+                                </connections>
+                            </segmentedControl>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="EcC-9R-oeJ">
-                                <rect key="frame" x="10" y="136" width="373" height="317"/>
+                                <rect key="frame" x="10" y="191" width="373" height="317"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HTH-lB-JsT">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="34"/>
@@ -101,9 +111,16 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b8C-AP-Mmy">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="PKa-W3-wd4"/>
+                                                    <constraint firstAttribute="width" constant="100" id="hhL-ou-aa2"/>
+                                                </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Gw-WI-tYB">
                                                 <rect key="frame" x="100" y="0.0" width="273" height="100"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="273" id="lki-Hz-qDv"/>
+                                                </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Take Picture"/>
                                             </button>
@@ -111,26 +128,16 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="97V-UB-F03">
-                                <rect key="frame" x="131" y="143" width="131" height="32"/>
-                                <segments>
-                                    <segment title="View"/>
-                                    <segment title="Edit"/>
-                                </segments>
-                                <connections>
-                                    <action selector="changeEditMode:" destination="xV5-t9-jpx" eventType="valueChanged" id="ugS-Mm-z9O"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="zmA-F1-0GN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="EcC-9R-oeJ" firstAttribute="leading" secondItem="zmA-F1-0GN" secondAttribute="leading" constant="10" id="5Ii-V4-tae"/>
-                            <constraint firstItem="zmA-F1-0GN" firstAttribute="trailing" secondItem="97V-UB-F03" secondAttribute="trailing" constant="131" id="Brq-xR-mvw"/>
-                            <constraint firstItem="zmA-F1-0GN" firstAttribute="bottom" secondItem="EcC-9R-oeJ" secondAttribute="bottom" constant="316" id="V4n-pv-ZGr"/>
-                            <constraint firstItem="97V-UB-F03" firstAttribute="top" secondItem="zmA-F1-0GN" secondAttribute="top" constant="40" id="lGM-ic-I4U"/>
-                            <constraint firstItem="zmA-F1-0GN" firstAttribute="trailing" secondItem="EcC-9R-oeJ" secondAttribute="trailing" constant="10" id="p4D-Bp-W5b"/>
-                            <constraint firstItem="97V-UB-F03" firstAttribute="leading" secondItem="zmA-F1-0GN" secondAttribute="leading" constant="131" id="vcM-bT-Sr8"/>
+                            <constraint firstItem="zmA-F1-0GN" firstAttribute="trailing" secondItem="97V-UB-F03" secondAttribute="trailing" constant="131" id="0zv-so-lo0"/>
+                            <constraint firstItem="EcC-9R-oeJ" firstAttribute="leading" secondItem="zmA-F1-0GN" secondAttribute="leading" constant="10" id="DX9-5m-B4A"/>
+                            <constraint firstItem="zmA-F1-0GN" firstAttribute="bottom" secondItem="EcC-9R-oeJ" secondAttribute="bottom" constant="261" id="FA3-78-tsc"/>
+                            <constraint firstItem="97V-UB-F03" firstAttribute="top" secondItem="zmA-F1-0GN" secondAttribute="top" constant="42" id="YSJ-rQ-kNH"/>
+                            <constraint firstItem="97V-UB-F03" firstAttribute="leading" secondItem="zmA-F1-0GN" secondAttribute="leading" constant="131" id="oQk-aL-3sk"/>
+                            <constraint firstItem="zmA-F1-0GN" firstAttribute="trailing" secondItem="EcC-9R-oeJ" secondAttribute="trailing" constant="10" id="rfz-G8-Ikq"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" selectedImage="house.fill" id="h4Z-Xj-P0C"/>
@@ -138,6 +145,7 @@
                     <connections>
                         <outlet property="sgmtEditMode" destination="97V-UB-F03" id="CRu-uJ-Inc"/>
                         <outlet property="takePicButton" destination="5Gw-WI-tYB" id="Dwp-CU-OkL"/>
+                        <outlet property="takePicButtonWidth" destination="lki-Hz-qDv" id="IRp-zF-hKQ"/>
                         <outlet property="txtAddress" destination="WDw-KP-Jva" id="v5p-FS-Q3r"/>
                         <outlet property="txtCity" destination="EYR-n5-Pq1" id="gpd-l6-OVn"/>
                         <outlet property="txtName" destination="iGm-HF-VuR" id="bt4-eG-KhE"/>
@@ -211,8 +219,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4pM-c6-biz">
-                                <rect key="frame" x="36" y="223" width="320" height="267.33333333333337"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4pM-c6-biz">
+                                <rect key="frame" x="36" y="222.99999999999997" width="320" height="267.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort Order:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXj-A1-7e0">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="20.333333333333332"/>
@@ -224,7 +232,7 @@
                                         <rect key="frame" x="0.0" y="20.333333333333343" width="320" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ec4-5n-Yqg">
-                                        <rect key="frame" x="0.0" y="236.33333333333334" width="320" height="31.000000000000028"/>
+                                        <rect key="frame" x="0.0" y="236.33333333333331" width="320" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ascending Order:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEo-Fv-EYM">
                                                 <rect key="frame" x="0.0" y="0.0" width="261" height="31"/>
@@ -242,8 +250,14 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JwQ-Yz-g1S"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JwQ-Yz-g1S" firstAttribute="trailing" secondItem="4pM-c6-biz" secondAttribute="trailing" constant="37" id="2Wv-vl-e6i"/>
+                            <constraint firstItem="4pM-c6-biz" firstAttribute="leading" secondItem="JwQ-Yz-g1S" secondAttribute="leading" constant="36" id="S16-nA-LgB"/>
+                            <constraint firstItem="4pM-c6-biz" firstAttribute="top" secondItem="JwQ-Yz-g1S" secondAttribute="top" constant="164" id="pa4-3u-fZz"/>
+                            <constraint firstItem="JwQ-Yz-g1S" firstAttribute="bottom" secondItem="4pM-c6-biz" secondAttribute="bottom" constant="278.67000000000002" id="tvr-dO-L2Q"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="i9X-SS-vZM"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="i9X-SS-vZM"/>
                     <connections>
                         <outlet property="pckSortField" destination="aNL-GQ-Nvj" id="rJR-UZ-JXe"/>
                         <outlet property="swAscending" destination="Mif-hM-2Gg" id="lT9-hG-68j"/>
@@ -278,11 +292,11 @@
             </objects>
             <point key="canvasLocation" x="-828" y="-621"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--List-->
         <scene sceneID="8o3-Yu-LRN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2QM-hB-MRr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="list.bullet.clipboard.fill" catalog="system" id="Qkm-RB-oTG"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list.bullet.clipboard.fill" catalog="system" id="Qkm-RB-oTG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hN-FY-egP">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -299,6 +313,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="list.bullet.clipboard.fill" catalog="system" width="98" height="128"/>
         <image name="location.fill" catalog="system" width="128" height="119"/>
