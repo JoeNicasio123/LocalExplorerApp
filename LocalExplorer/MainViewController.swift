@@ -8,12 +8,13 @@
 import UIKit
 import CoreData
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+class MainViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
     var currentLocation: Location?
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+    @IBOutlet weak var imgLocationPicture: UIImageView!
     @IBOutlet weak var takePicButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var takePicButton: UIButton!
     @IBOutlet weak var txtZip: UITextField!
@@ -43,6 +44,26 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         for textField in textFields {
             textField.addTarget(self, action: #selector(textFieldDidEndEditing(_:)), for: .editingDidEnd)
         }
+    }
+    
+    @IBAction func changePicture(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraController = UIImagePickerController()
+            cameraController.sourceType = .camera
+            cameraController.cameraCaptureMode = .photo
+            cameraController.delegate = self
+            cameraController.allowsEditing = true
+            self.present(cameraController, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[.editedImage] as? UIImage {
+            imgLocationPicture.contentMode = .scaleAspectFit
+            imgLocationPicture.image = image
+        }
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func textFieldDidEndEditing(_ textField: UITextField) {

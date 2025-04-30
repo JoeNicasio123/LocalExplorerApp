@@ -123,6 +123,9 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Take Picture"/>
+                                                <connections>
+                                                    <action selector="changePicture:" destination="xV5-t9-jpx" eventType="touchUpInside" id="Oxz-Zs-eBa"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -143,6 +146,7 @@
                     <tabBarItem key="tabBarItem" title="Main" image="house.fill" catalog="system" selectedImage="house.fill" id="h4Z-Xj-P0C"/>
                     <navigationItem key="navigationItem" id="xua-IH-b6a"/>
                     <connections>
+                        <outlet property="imgLocationPicture" destination="b8C-AP-Mmy" id="78Q-R9-Exb"/>
                         <outlet property="sgmtEditMode" destination="97V-UB-F03" id="CRu-uJ-Inc"/>
                         <outlet property="takePicButton" destination="5Gw-WI-tYB" id="Dwp-CU-OkL"/>
                         <outlet property="takePicButtonWidth" destination="lki-Hz-qDv" id="IRp-zF-hKQ"/>
