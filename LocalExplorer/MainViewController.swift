@@ -13,7 +13,7 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     var currentLocation: Location?
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
     @IBOutlet weak var imgLocationPicture: UIImageView!
     @IBOutlet weak var takePicButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var takePicButton: UIButton!
