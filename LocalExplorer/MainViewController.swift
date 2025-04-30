@@ -34,6 +34,10 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             txtCity.text = location.city
             txtState.text = location.state
             txtZip.text = location.zipCode
+            
+            if let imageData = currentLocation?.image as? Data {
+                imgLocationPicture.image = UIImage(data: imageData)
+            }
         }
 
         // Set initial view/edit mode
@@ -62,6 +66,11 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         if let image = info[.editedImage] as? UIImage {
             imgLocationPicture.contentMode = .scaleAspectFit
             imgLocationPicture.image = image
+            if currentLocation == nil {
+                let context = appDelegate.persistentContainer.viewContext
+                currentLocation = Location(context: context)
+            }
+            currentLocation?.image = image.jpegData(compressionQuality: 1.0)
         }
         dismiss(animated: true, completion: nil)
     }
@@ -99,14 +108,16 @@ class MainViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
                 textField.isEnabled = false
                 textField.borderStyle = .none
             }
-            takePicButton.isHidden = true
+            takePicButton.alpha = 0
+            takePicButton.isUserInteractionEnabled = false
             navigationItem.rightBarButtonItem = nil
         } else if sgmtEditMode.selectedSegmentIndex == 1 {
             for textField in textFields {
                 textField.isEnabled = true
                 textField.borderStyle = .roundedRect
             }
-            takePicButton.isHidden = false
+            takePicButton.alpha = 1
+            takePicButton.isUserInteractionEnabled = true
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveLocation))
         }
     }
